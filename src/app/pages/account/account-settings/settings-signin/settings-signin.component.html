@@ -1,0 +1,55 @@
+<p class="m-0 px-5 py-4 border-bottom-1 border-100 text-900 font-bold text-lg">Sign-in Method</p>
+
+<div class="p-5">
+  @if (!changeEmail()) {
+    <div class="flex justify-content-between pb-4 border-bottom-1 border-100">
+      <p class="m-0 line-height-3 text-900 font-semibold">Email Address <br>
+        <span class="text-400 font-semibold text-sm">{{ accountService.contactEmail }}</span>
+      </p>
+      <p-button label="Change Email" severity="secondary" (onClick)="changeEmail.set(true)" />
+    </div>
+  } @else {
+    <div class="pb-4 border-bottom-1 border-100">
+      <p class="m-0 mb-2 text-900 font-semibold">Enter New Email Address</p>
+      <input type="text" #emailInp pInputText [value]="accountService.contactEmail" variant="filled" class="max-w-30rem w-full mb-4 block">
+      <p-button label="Update Email" [loading]="loading()" (onClick)="updateEmail(emailInp.value)" styleClass="mr-1" />
+      <p-button label="Cancel" [text]="true" (onClick)="changeEmail.set(false)" />
+    </div>
+  }
+
+  @if (!changePassword()) {
+    <div class="flex justify-content-between py-4">
+      <p class="m-0 line-height-3 text-900 font-semibold">Password <br>
+        <span class="text-400 font-semibold text-sm">{{ '*'.repeat(accountService.password.length) }}</span>
+      </p>
+      <p-button label="Reset Password" severity="secondary" (onClick)="changePassword.set(true)" />
+    </div>
+  } @else {
+    <div class="grid py-4">
+      <div class="col-12 lg:col-4">
+        <p class="m-0 mb-2 text-900 font-semibold">Current Password</p>
+        <p-password  [toggleMask]="true" [feedback]="false" variant="filled" />
+      </div>
+      <div class="col-12 lg:col-4">
+        <p class="m-0 mb-2 text-900 font-semibold">New Password</p>
+        <p-password  [toggleMask]="true" [feedback]="false" variant="filled" />
+      </div>
+      <div class="col-12 lg:col-4">
+        <p class="m-0 mb-2 text-900 font-semibold">Confirm New Password</p>
+        <p-password  [toggleMask]="true" [feedback]="false" variant="filled" />
+      </div>
+      <div class="col-12 mt-2">
+        <p-button label="Update Password" [loading]="loading()" (onClick)="updatePassword()" styleClass="mr-1" />
+        <p-button label="Cancel" [text]="true" (onClick)="changePassword.set(false)" />
+      </div>
+    </div>
+  }
+
+  <div class="flex flex-column sm:flex-row mt-3 justify-content-between align-items-center gap-4 px-4 py-3 border-dashed border-primary-200 surface-ground border-round">
+    <div>
+      <p class="m-0 mb-2 text-900 text-sm font-semibold">Secure Your Account</p>
+      <span class="font-semibold text-400 text-13px">Two-factor authentication adds an extra layer of security to your account. To log in, in addition you'll need to provide a 6 digit code</span>
+    </div>
+    <p-button label="Enable" />
+  </div>
+</div>

@@ -1,0 +1,31 @@
+<p-menu #menu [popup]="true" styleClass="w-full sm:w-22rem">
+  <ng-template pTemplate="start">
+    <div class="px-3 pt-4 pb-3">
+      <p-iconField iconPosition="left" >
+        <p-inputIcon styleClass="pi pi-search" />
+        <input type="text" pInputText placeholder="Search" />
+      </p-iconField>
+    </div>
+
+    <ng-scrollbar class="overflow-y-auto py-3 border-y-1 border-200 h-21rem">
+      <p class="m-0 font-bold text-gray-400 px-4 mb-2">Recently Searched</p>
+
+      @for (recentlySearched of allRecentlySearched; track $index) {
+        <button pRipple class=" w-full p-link flex align-items-center gap-3 px-4 py-3 text-color hover:surface-100 border-noround">
+          <span class="h-2rem w-2rem border-round bg-black-alpha-10 flex justify-content-center align-items-center">
+            <i [class]="recentlySearched.icon + ' text-primary'"></i>
+          </span>
+          <div>
+            <p class="mt-0 mb-1 text-sm font-semibold">{{ recentlySearched.title }}</p>
+            <span class="text-xs">{{ recentlySearched.id}}</span>
+          </div>
+        </button>
+      }
+    </ng-scrollbar>
+
+    <p-button label="See All History" styleClass="max-w-full w-18rem mx-4 my-3" [outlined]="true" />
+
+  </ng-template>
+</p-menu>
+
+<p-button (onClick)="menu.toggle($event)" icon="pi pi-search" size="large" [text]="true"/>

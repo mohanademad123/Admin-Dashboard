@@ -1,0 +1,23 @@
+:host {
+  display: block;
+  .dashboard-layout {
+    display: flex;
+    flex-wrap: wrap;
+    > .xxl-size-1-3 {
+      width: 100%;
+    }
+    > .xxl-size-2-3 {
+      width: 100%;
+    }
+    @media (min-width: 1400px) {
+      flex-direction: row;
+      > .xxl-size-1-3 {
+        width: calc(100% / 3);
+      }
+      > .xxl-size-2-3 {
+        width: calc(100% / 3 * 2);
+      }
+    }
+    flex-direction: column;
+  }
+}

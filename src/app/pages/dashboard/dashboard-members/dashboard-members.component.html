@@ -1,0 +1,53 @@
+<div class="flex justify-content-between align-items-center mb-5">
+  <div>
+    <p class="m-0 mb-1 text-900 text-lg font-bold">Members Statistics</p>
+    <span class="text-13px text-400 font-semibold">Over 500 members</span>
+  </div>
+  <p-button label="New Member" icon="pi pi-plus" [outlined]="true" />
+</div>
+
+<p-table
+[value]="membersService.currentMembers()"
+[(selection)]="selectedMembers"
+dataKey="author.name"
+[tableStyle]="{'min-width': '47rem'}">
+    <ng-template pTemplate="header">
+      <tr>
+          <th><p-tableHeaderCheckbox /></th>
+          <th>Authors</th>
+          <th>Company</th>
+          <th>Progress</th>
+          <th>Actions</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-member>
+      <tr>
+        <td class="pr-0">
+          <p-tableCheckbox [value]="member" />
+        </td>
+
+        <td class="flex align-items-center">
+          <p-avatar [image]="member.author.imgUrl" size="large" styleClass="mr-3 overflow-hidden" />
+          <div>
+            <a class="block m-0 mb-1 text-900 text-sm hover:text-primary transition-duration-100 cursor-pointer font-bold">{{ member.author.name }}</a>
+            <span class="text-13px text-400 font-semibold">{{ member.author.jobTitle }}</span>
+          </div>
+        </td>
+
+        <td>
+          <a class="block m-0 mb-1 text-900 text-sm hover:text-primary transition-duration-100 cursor-pointer font-bold">{{ member.company.name }}</a>
+          <span class="text-13px text-400 font-semibold">{{ member.company.service }}</span>
+        </td>
+
+        <td>
+          <p-progressBar [value]="member.progress" styleClass="h-1rem" />
+        </td>
+
+        <td>
+          <p-button icon="pi pi-database" [text]="true" />
+          <p-button icon="pi pi-pencil" [text]="true" />
+          <p-button icon="pi pi-trash" [text]="true" />
+        </td>
+      </tr>
+    </ng-template>
+</p-table>

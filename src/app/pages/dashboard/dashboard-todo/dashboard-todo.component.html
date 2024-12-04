@@ -1,0 +1,16 @@
+<div class="flex justify-content-between align-items-center mb-4">
+  <p class="m-0 mb-1 text-900 text-lg font-bold">Todo</p>
+  <app-filter-options-popup />
+</div>
+
+@for (todo of todoList; track $index) {
+  <div class="flex align-items-center mb-4">
+    <span class="bg-{{todo.barColor}}-500 todo-bar"></span>
+    <p-checkbox [binary]="true" inputId="binary" variant="filled" />
+    <div class="flex-grow-1 mx-3 font-semibold">
+      <a class="text-900 text-sm cursor-pointer hover:text-primary transition-duration-100">{{ todo.title }}</a>
+      <p class="text-13px text-400 m-0 mt-1">{{ todo.description }}</p>
+    </div>
+    <p-tag [severity]="todo.tagSeverity" value="New"/>
+  </div>
+}

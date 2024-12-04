@@ -1,0 +1,11 @@
+:host {
+  ::ng-deep {
+    input, textarea, .p-dropdown {
+      width: 100%;
+    }
+
+    .p-dropdown-label {
+      color: var(--text-color-secondary);
+    }
+  }
+}

@@ -1,0 +1,21 @@
+<div class="flex justify-content-between gap-2 align-items-center mb-4">
+  <div>
+    <p class="m-0 mb-1 text-900 text-lg font-bold">Action Needed</p>
+    <span class="text-13px text-400 font-semibold">Complete your profile setup</span>
+  </div>
+  <app-filter-options-popup />
+</div>
+
+<apx-chart
+  [series]="chartOptions.series"
+  [chart]="chartOptions.chart"
+  [plotOptions]="chartOptions.plotOptions"
+  [labels]="chartOptions.labels"
+></apx-chart>
+
+<div class="text-center px-3 line-height-3 mb-4">
+  <p-tag value="Notes:" severity="danger" styleClass="mr-1" />
+  Current sprint requires stakeholders to approve newly amended policies
+</div>
+
+<p-button label="Take Action" styleClass="w-full" />

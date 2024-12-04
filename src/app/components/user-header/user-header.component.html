@@ -1,0 +1,58 @@
+<div class="flex flex-column md:flex-row justify-content-between align-items-center gap-3">
+
+  <div class="image mr-1">
+    <img [src]="accountService.avatar" alt="User Image" class="border-round-md">
+  </div>
+
+  <div class="flex-grow-1 p-0">
+    <div class="flex justify-content-between mb-3 gap-3 flex-column-reverse md:flex-row">
+      <div class="flex align-items-center gap-2 ">
+        <p class="m-0 font-bold text-xl text-900">{{ accountService.fullName }}</p>
+        <i class="pi pi-verified text-primary"></i>
+        <p-button label="Upgrade To Pro" styleClass="py-1 px-2 text-xs" size="small" severity="success" [outlined]="true"/>
+      </div>
+      <div class="flex gap-1">
+        <p-button label="Follow" size="small" [text]="true" severity="secondary" />
+        <p-button label="Hire Me" size="small" />
+        <app-filter-options-popup />
+      </div>
+    </div>
+
+    <div class="flex align-items-center gap-3 text-13px font-bold text-400 mb-3 text-center">
+      <span><i class="pi pi-user mr-1"></i> Developer</span>
+      <span><i class="pi pi-map-marker mr-1"></i> SF, Bay Area</span>
+      <span><i class="pi pi-envelope mr-1"></i> Rami&#64;mw.com</span>
+    </div>
+
+    <div class="flex justify-content-between flex-column lg:flex-row gap-3 lg:align-items-center">
+      <div class="flex align-items-center flex-wrap gap-3">
+        <div class="border-dashed border-round font-bold surface-border flex-center flex-column p-1 h-4rem w-8rem">
+          <p class="m-0 mb-1 text-xl"><i class="pi pi-arrow-up text-green-400"></i> 4500$</p>
+          <span class="text-13px text-400">Earnings</span>
+        </div>
+        <div class="border-dashed border-round font-bold surface-border flex-center flex-column p-1 h-4rem w-8rem">
+          <p class="m-0 mb-1 text-xl"><i class="pi pi-arrow-down text-red-400"></i> 75</p>
+          <span class="text-13px text-400">Projects</span>
+        </div>
+        <div class="border-dashed border-round font-bold surface-border flex-center flex-column p-1 h-4rem w-8rem">
+          <p class="m-0 mb-1 text-xl"><i class="pi pi-arrow-up text-green-400"></i> 60%</p>
+          <span class="text-13px text-400">Success Rate</span>
+        </div>
+      </div>
+      <div class="max-w-15rem w-15rem">
+        <span class="text-400 font-bold text-13px mb-1 block">Profile Compleation</span>
+        <p-progressBar [value]="50" />
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<ul class="list-none mb-0 mt-5 p-0 flex flex-wrap">
+  @for (link of links(); track $index) {
+    <li>
+      <a [routerLink]="link.link" routerLinkActive="text-primary hover:text-primary border-bottom-1" class="block font-bold text-400 hover:text-500 transition-duration-100 no-underline p-3">{{ link.name }}</a>
+    </li>
+  }
+</ul>

@@ -1,0 +1,29 @@
+<div class="flex align-items-center flex-wrap justify-content-end mb-4 gap-2">
+  <p class="text-900 font-bold text-lg m-0 flex-grow-1">My Documents</p>
+  <p-iconField iconPosition="left">
+    <p-inputIcon styleClass="pi pi-search" />
+    <input type="text" class="w-full"  pInputText placeholder="Search..." />
+  </p-iconField>
+  <p-button label="File Manager" />
+</div>
+
+<div class="grid">
+  @for (folder of folders; track $index) {
+    <div pAnimateOnScroll enterClass="scalein" leaveClass="fadeout" class="col-12 md:col-6 lg:col-4 animation-duration-200" [title]="folder.name">
+      <a class="block px-4 py-5 surface-section shadow-1 border-round-lg m-1 text-center">
+        <img src="documents/folder.svg" alt="Folder SVG">
+        <p class="mb-2 mt-4 font-bold text-900">{{ folder.name }}</p>
+        <span class="text-400 text-13px font-semibold">{{ folder.files }} files</span>
+      </a>
+    </div>
+  }
+  @for (file of files; track $index) {
+    <div pAnimateOnScroll enterClass="scalein" leaveClass="fadeout" class="col-12 md:col-6 lg:col animation-duration-200" [title]="file.name">
+      <a class="block px-4 py-5 surface-section shadow-1 border-round-lg m-1 text-center">
+        <img [src]="file.img" alt="File SVG">
+        <p class="mb-2 mt-4 font-bold text-900">{{ file.name }}</p>
+        <span class="text-400 text-13px">{{ file.time}}</span>
+      </a>
+    </div>
+  }
+</div>

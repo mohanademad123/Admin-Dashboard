@@ -1,0 +1,53 @@
+<p class="m-0 mb-3 text-900 text-3xl font-bold">Sign In</p>
+<span class="block mb-4 text-400 text-sm font-semibold">Your Social Campaigns</span>
+
+<div class="flex flex-wrap justify-content-center gap-2 mb-5">
+  <p-button label="Sign In With Google" severity="secondary" [outlined]="true" styleClass="text-13px">
+    <img src="platforms/google.svg" class="mr-2" alt="Google">
+  </p-button>
+  <p-button label="Sign In With Apple" severity="secondary" [outlined]="true" styleClass="text-13px">
+    <img src="platforms/apple.svg" class="mr-2" alt="Apple">
+  </p-button>
+</div>
+
+<span class="or-with-email mb-4 text-sm">Or with email</span>
+
+<p-messages severity="info">
+  <ng-template pTemplate>
+    <small class="text-center w-full">Use account <b>{{ accountService.contactEmail }}</b> and password <b>{{ accountService.password }}</b></small>
+  </ng-template>
+</p-messages>
+
+
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="mt-6 mb-4 text-left">
+  <div class="mb-5">
+    <p-floatLabel>
+      <input pInputText id="email" formControlName="email" class="w-full" />
+      <label for="email">Email</label>
+    </p-floatLabel>
+    @if (loginForm.controls.email.hasError('pattern') && loginForm.controls.email.touched) {
+      <small class="text-red-500 block mt-1 text-xs">Enter a valid email</small>
+    }
+    @if (loginForm.controls.email.hasError('required') && loginForm.controls.email.touched) {
+      <small class="text-red-500 block mt-1 text-xs">Email is required</small>
+    }
+  </div>
+
+  <div class="mb-2">
+    <p-floatLabel class="w-full">
+      <p-password formControlName="password" [feedback]="false" [toggleMask]="true" />
+      <label for="password">Password</label>
+    </p-floatLabel>
+    @if (loginForm.controls.password.hasError('minlength') && loginForm.controls.password.touched) {
+      <small class="text-red-500 block mt-1 text-xs">Password must be at least 5 characters</small>
+    }
+    @if (loginForm.controls.password.hasError('required') && loginForm.controls.password.touched) {
+      <small class="text-red-500 block mt-1 text-xs">Password is required</small>
+    }
+  </div>
+
+  <a routerLink="/auth/forgot-password" class="block text-right text-13px mb-4 text-primary hover:text-primary-400 transition-duration-100">Forgot Password?</a>
+  <p-button [disabled]="loginForm.invalid" type="submit" label="Sign In" [loading]="loading()" styleClass="w-full" />
+</form>
+
+<p class="text-sm mb-5 text-400">Not a Member yet? <a routerLink="/auth/register" class="text-primary font-medium ml-1 hover:text-primary-400 transition-duration-100">Sign up</a></p>

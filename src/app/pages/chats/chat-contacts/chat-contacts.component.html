@@ -1,0 +1,23 @@
+<p-iconField iconPosition="left">
+  <p-inputIcon styleClass="pi pi-search" />
+  <input type="text" [(ngModel)]="searchTerm" class="w-full mb-5" variant="filled" pInputText placeholder="Search by name or email..." />
+</p-iconField>
+
+@for (contact of filteredContacts(); track $index) {
+  <div class="flex align-items-center gap-2 mb-4">
+    <p-avatar [image]="contact.profilePictureUrl" [label]="!contact.profilePictureUrl ? contact.name[0] : ''" size="large" shape="circle"
+      [styleClass]="'mr-2' + ($even === true ? ' bg-teal-100 text-teal-500' : ' bg-orange-100 text-orange-500')"
+      [class.online]="contact.status === 'Online'"
+    />
+    <div class="flex-grow-1">
+      <a class="block w-fit text-900 hover:text-primary transition-duration-100 cursor-pointer m-0 mb-1 font-bold">{{ contact.name }}</a>
+      <span class="text-400 font-semibold text-13px">{{ contact.email }}</span>
+    </div>
+    <div>
+      <span class="text-13px text-400">{{ contact.lastMessageTimestamp }}</span>
+      @if (contact.unreadMessageCount) {
+        <span class="text-xs text-indigo-600 unread-msgs-count bg-indigo-100">{{ contact.unreadMessageCount }}</span>
+      }
+    </div>
+  </div>
+}

@@ -1,0 +1,15 @@
+:host {
+  display: block;
+  a {
+    cursor: pointer;
+    min-width: 12rem;
+    > p {
+      transition: .1s;
+    }
+    &:hover {
+      > p {
+        color: var(--primary-color) !important;
+      }
+    }
+  }
+}

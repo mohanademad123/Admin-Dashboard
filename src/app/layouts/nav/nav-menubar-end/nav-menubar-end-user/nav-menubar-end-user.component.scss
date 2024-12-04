@@ -1,0 +1,17 @@
+img {
+  display: block;
+  cursor: pointer;
+}
+
+.link-active {
+  > * {
+    color: var(--primary-color);
+  }
+}
+
+::ng-deep {
+  .p-tag {
+    padding-bottom: 0 !important;
+    padding-top: 0 !important;
+  }
+}

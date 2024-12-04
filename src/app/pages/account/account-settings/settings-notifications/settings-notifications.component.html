@@ -1,0 +1,28 @@
+<p class="m-0 px-5 py-4 border-bottom-1 border-100 text-900 font-bold text-lg">Notifications</p>
+
+<div class="p-5 pb-4">
+  <div class="flex justify-content-between align-items-center pb-3 align-items-center border-bottom-1 border-100">
+    <span class="text-900 font-medium text-sm flex-grow-1 mr-2">Billing Updates</span>
+    <div class="max-w-5rem sm:max-w-6rem w-full">
+      <p-checkbox [ngModel]="true" [binary]="true" inputId="google-email" />
+      <label for="google-email" class="pl-2 font-medium text-13px text-400">Email</label>
+    </div>
+    <div class="max-w-5rem sm:max-w-6rem w-full">
+      <p-checkbox [ngModel]="false" [binary]="true" inputId="google-phone" />
+      <label for="google-phone" class="pl-2 font-medium text-13px text-400">Phone</label>
+    </div>
+  </div>
+
+  @for (title of ['New Team Members', 'Completed Projects', 'Newsletters']; track $index) {
+    <div class="flex justify-content-between align-items-center py-3 align-items-center border-100" [class.border-bottom-1]="!$last">
+      <span class="text-900 font-medium text-sm flex-grow-1 mr-2">{{ title }}</span>
+      <p-checkbox [ngModel]="$odd" [binary]="true" class="max-w-5rem sm:max-w-6rem w-full" />
+      <p-checkbox [ngModel]="$even" [binary]="true" class="max-w-5rem sm:max-w-6rem w-full" />
+    </div>
+  }
+</div>
+
+<div class="px-5 py-4 border-top-1 text-right border-100 text-900 font-bold text-lg">
+  <p-button label="Discard" [text]="true" styleClass="mr-1" />
+  <p-button label="Save Changes" [loading]="loading()" (onClick)="load()" />
+</div>

@@ -1,0 +1,50 @@
+<p class="m-0 mb-2 text-xl font-bold">Business Info</p>
+<p class="text-color-secondary text-13px font-bold mb-6">
+  If you need more info, please check out
+  <span class="text-primary hover:text-primary-400 transition-duration-100 text-sm cursor-pointer">Help Page</span> .
+</p>
+
+<form [formGroup]="businessForm">
+  <p class="mb-5">
+    <label for="businessName" class="block mb-2">Business Name <span class="text-red-500">*</span></label>
+    <input variant="filled" formControlName="businessName" pInputText id="businessName" aria-describedby="businessName-help" />
+    @if (businessForm.controls.businessName.invalid && businessForm.controls.businessName.dirty) {
+      <small id="businessName-help" class="text-red-500 block mt-1">Business name is required</small>
+    }
+  </p>
+
+  <p class="mb-5">
+    <label for="shortenedDescriptor" class="block mb-2">Shortened Descriptor <span class="text-red-500">*</span></label>
+    <input variant="filled" formControlName="shortenedDescriptor" pInputText id="shortenedDescriptor" aria-describedby="shortenedDescriptor-help" />
+    @if (businessForm.controls.shortenedDescriptor.invalid && businessForm.controls.shortenedDescriptor.dirty) {
+      <small id="shortenedDescriptor-help" class="text-red-500 block mt-1">Shortened descriptor is required</small>
+    }
+    <span class="text-color-secondary text-13px block mt-1">Customers will see this shortened version of your statement descriptor</span>
+  </p>
+
+  <p class="mb-5">
+    <label id="corporationType" class="block mb-2">Corporation Type <span class="text-red-500">*</span></label>
+    <p-dropdown variant="filled" formControlName="corporationType" ariaLabel="corporationType" [options]="corporations" />
+  </p>
+
+  <p class="mb-5">
+    <label for="businessDescription" class="block mb-2">Business Description</label>
+    <textarea variant="filled" rows="4" cols="30" id="businessDescription" pInputTextarea formControlName="businessDescription"></textarea>
+  </p>
+
+  <p class="mb-5">
+    <label for="contactEmail" class="block mb-2">Contact Email <span class="text-red-500">*</span></label>
+    <input variant="filled" formControlName="contactEmail" pInputText id="contactEmail" aria-describedby="contactEmail-help" />
+    @if (businessForm.controls.contactEmail.hasError('email') && businessForm.controls.contactEmail.touched) {
+      <small id="contactEmail-help" class="text-red-500 block mt-1">Enter a valid email</small>
+    }
+    @if (businessForm.controls.contactEmail.hasError('required') && businessForm.controls.contactEmail.touched) {
+      <small id="contactEmail-help" class="text-red-500 block mt-1">Contact email is required</small>
+    }
+  </p>
+</form>
+
+<div class="flex pt-4 justify-content-between">
+  <p-button label="Back" icon="pi pi-arrow-left" (onClick)="prevCallback().emit()" />
+  <p-button [disabled]="businessForm.invalid" (onClick)="nextCallback().emit()" label="Next" icon="pi pi-arrow-right" iconPos="right" />
+</div>

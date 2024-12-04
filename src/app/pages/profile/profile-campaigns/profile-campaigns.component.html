@@ -1,0 +1,29 @@
+<div class="flex align-items-center flex-wrap justify-content-end mb-4 gap-2">
+  <p class="text-900 font-bold text-lg m-0 flex-grow-1">My Campaigns</p>
+  <p-button label="Add Campaign" />
+</div>
+
+<div class="grid">
+  @for (campaign of campaignsService.currentCampaigns(); track $index) {
+    <div pAnimateOnScroll enterClass="zoomin" leaveClass="fadeout" class="col-12 md:col-6 lg:col-4 animation-duration-200" [title]="campaign.title">
+      <div class="px-4 py-5 surface-section shadow-1 border-round-lg m-1">
+
+        <div class="flex justify-content-between gap-3 align-items-center mb-4">
+          <img [src]="campaign.img" class="w-3rem h-3rem p-2 surface-100 border-round" [alt]="campaign.title">
+          <a class="text-400 font-semibold flex-grow-1 hover:text-primary cursor-pointer transition-duration-100">{{ campaign.title }}</a>
+          <app-filter-options-popup />
+        </div>
+
+        <p class="m-0 mb-2 font-bold text-4xl text-900">{{ campaign.count | number }}</p>
+
+        <p [class]="'text-sm font-semibold mb-4 ' + (campaign.status.percentage[0] === '-' ? 'text-red-500' : 'text-green-500')">
+          <i [class]="'pi mr-1 ' + (campaign.status.percentage[0] === '-' ? 'pi-arrow-down-left' : 'pi-arrow-up-right')"></i> {{ campaign.status.percentage }}
+          <span class="text-400 ml-2">{{ campaign.status.description }}</span>
+        </p>
+
+        <span class="px-2 py-1 surface-100 font-semibold text-900 text-13px border-round mr-1">{{ campaign.info.percentage }}</span>
+        <span class="p-2 text-400 font-semibold text-sm">{{ campaign.info.description }}</span>
+      </div>
+    </div>
+  }
+</div>

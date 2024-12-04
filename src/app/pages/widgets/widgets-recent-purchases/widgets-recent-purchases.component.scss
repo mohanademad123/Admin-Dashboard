@@ -1,0 +1,15 @@
+:host {
+  ::ng-deep {
+    tr {
+      &:last-of-type {
+        td {
+          border-bottom: none;
+        }
+      }
+    }
+    .p-paginator-bottom {
+      border-bottom: none;
+      margin-top: 1rem;
+    }
+  }
+}

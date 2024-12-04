@@ -1,0 +1,42 @@
+<p class="m-0 px-5 py-4 border-bottom-1 border-100 text-900 font-bold text-lg">Connected Accounts</p>
+
+<div class="p-5">
+  <div class="mb-4 px-4 py-3 border-dashed border-primary-200 surface-ground border-round">
+    <i class="pi pi-shield mr-2 text-primary"></i>
+    <span class="text-400 font-semibold text-sm">Two-factor authentication adds an extra layer of security to your account. To log in, in you'll need to provide a 4 digit amazing code.
+      <a class="text-primary hover:text-primary-400 transition-duration-100 text-base font-bold cursor-pointer"> Learn More</a>
+    </span>
+  </div>
+
+  <div class="flex justify-content-between py-4 align-items-center border-bottom-1 border-100 gap-3">
+    <img src="platforms/google.svg" alt="Google">
+    <div class="flex-grow-1">
+      <p class="m-0 mb-1 text-900 font-bold">Google</p>
+      <span class="text-400 font-semibold text-sm">Plan properly your workflow</span>
+    </div>
+    <p-inputSwitch [ngModel]="true" />
+  </div>
+
+  <div class="flex justify-content-between py-4 align-items-center border-bottom-1 border-100 gap-3">
+    <img src="platforms/github.svg" alt="Github">
+    <div class="flex-grow-1">
+      <p class="m-0 mb-1 text-900 font-bold">Github</p>
+      <span class="text-400 font-semibold text-sm">Keep eye on on your Repositories</span>
+    </div>
+    <p-inputSwitch [ngModel]="false" />
+  </div>
+
+  <div class="flex justify-content-between pt-4 pb-2 align-items-center gap-3">
+    <img src="platforms/slack.svg" alt="Slack">
+    <div class="flex-grow-1">
+      <p class="m-0 mb-1 text-900 font-bold">Slack</p>
+      <span class="text-400 font-semibold text-sm">Integrate Projects Discussions</span>
+    </div>
+    <p-inputSwitch [ngModel]="true" />
+  </div>
+</div>
+
+<div class="px-5 py-4 border-top-1 text-right border-100 text-900 font-bold text-lg">
+  <p-button label="Discard" [text]="true" styleClass="mr-1" />
+  <p-button label="Save Changes" [loading]="loading()" (onClick)="load()" />
+</div>

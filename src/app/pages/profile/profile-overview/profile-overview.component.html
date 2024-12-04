@@ -1,0 +1,13 @@
+<div class="grid">
+  <div class="col-12 lg:col-6 lg:pr-3">
+  @for (post of postsService.currentPosts().slice(0, postsService.currentPosts().length / 2); track $index) {
+    <app-overview-post pAnimateOnScroll enterClass="fadeinleft" exitClass="fadeoutleft" [post]="post" [class.mb-5]="!$last" />
+  }
+  </div>
+
+  <div class="col-12 lg:col-6 lg:pl-3">
+  @for (post of postsService.currentPosts().slice(postsService.currentPosts().length / 2); track $index) {
+    <app-overview-post pAnimateOnScroll enterClass="fadeinright" leaveClass="fadeoutright" [post]="post" [class.mb-5]="!$last" />
+  }
+  </div>
+</div>

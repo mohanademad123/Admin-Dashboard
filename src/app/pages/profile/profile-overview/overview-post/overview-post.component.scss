@@ -1,0 +1,14 @@
+:host {
+  display: block;
+
+  input {
+    flex-grow: 1;
+    &,
+    &:hover,
+    &:focus {
+      border: none;
+      outline: none;
+      box-shadow: none;
+    }
+  }
+}

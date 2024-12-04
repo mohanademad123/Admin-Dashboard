@@ -1,0 +1,21 @@
+<div class="flex justify-content-between gap-2 align-items-center mb-4">
+  <div>
+    <p class="m-0 mb-1 text-900 text-lg font-bold">Recent Users</p>
+    <span class="text-13px text-400 font-semibold">More than 500+ new users</span>
+  </div>
+  <div>
+    <p-button label="Year" size="small" />
+    <p-button label="Month" [text]="true" size="small" />
+    <p-button label="Week" [text]="true" size="small" />
+  </div>
+</div>
+
+<apx-chart
+  [series]="chartOptions.series"
+  [chart]="chartOptions.chart"
+  [xaxis]="chartOptions.xaxis"
+  [stroke]="chartOptions.stroke"
+  [tooltip]="chartOptions.tooltip"
+  [dataLabels]="chartOptions.dataLabels"
+  [fill]="chartOptions.fill"
+></apx-chart>

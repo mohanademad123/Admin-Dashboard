@@ -1,0 +1,46 @@
+<div class="border-round-lg shadow-1 surface-section mb-3">
+  <div class="flex p-4 pb-0 justify-content-between align-items-center mb-5">
+    <div>
+      <p class="m-0 mb-1 text-900 text-lg font-bold">Generate Reports</p>
+      <span class="text-13px text-400 font-semibold">Finance and accounting reports</span>
+    </div>
+    <p class="m-0 mb-1 text-primary text-lg font-bold">$24,500</p>
+  </div>
+
+  <div class="overflow-hidden">
+    <apx-chart
+      [chart]="reportsChartOptions.chart"
+      [stroke]="reportsChartOptions.stroke"
+      [yaxis]="reportsChartOptions.yaxis"
+      [xaxis]="reportsChartOptions.xaxis"
+      [series]="reportsChartOptions.series"
+      [tooltip]="reportsChartOptions.tooltip"
+    ></apx-chart>
+  </div>
+</div>
+
+
+<div class="border-round-lg shadow-1 surface-section">
+  <div class="flex p-4 pb-0 justify-content-between align-items-center mb-5">
+    <div>
+      <p class="m-0 mb-1 text-900 text-lg font-bold">Sales</p>
+      <span class="text-13px text-400 font-semibold">Oct 8 - Oct 26 2021</span>
+    </div>
+    <p class="m-0 mb-1 text-primary text-lg font-bold">$15,300</p>
+  </div>
+
+  <apx-chart
+    [series]="salesChartOptions.series"
+    [chart]="salesChartOptions.chart"
+    [dataLabels]="salesChartOptions.dataLabels"
+    [plotOptions]="salesChartOptions.plotOptions"
+    [yaxis]="salesChartOptions.yaxis"
+    [legend]="salesChartOptions.legend"
+    [fill]="salesChartOptions.fill"
+    [stroke]="salesChartOptions.stroke"
+    [tooltip]="salesChartOptions.tooltip"
+    [xaxis]="salesChartOptions.xaxis"
+    [states]="salesChartOptions.states"
+  ></apx-chart>
+
+</div>

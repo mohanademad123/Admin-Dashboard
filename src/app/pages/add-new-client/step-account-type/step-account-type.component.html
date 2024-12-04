@@ -1,0 +1,29 @@
+<p class="choose-account m-0 mb-2 text-xl font-bold">
+  Choose Account Type
+  <span tooltipStyleClass="text-xs" class="tooltip text-xs surface-400" pTooltip="Billing is issued based on your selected account type">!</span>
+</p>
+
+<p class="text-color-secondary text-13px font-bold mb-6">
+  If you need more info, please check out
+  <span class="text-primary hover:text-primary-400 transition-duration-100 text-sm cursor-pointer">Help Page</span> .
+</p>
+
+<div class="grid types-parent gap-4 mb-5">
+  <div (click)="chosenType.set('personal')" [class.active]="chosenType() === 'personal'" class="sm:col col-12 p-5 border-dashed surface-border border-round flex align-items-center gap-3">
+    <i class="pi text-xl text-color-secondary pi-address-book"></i>
+    <div class="font-bold">
+      <p class="mb-2 mt-0">Personal Account</p>
+      <span class="text-13px text-color-secondary">If you need more info, please check it out</span>
+    </div>
+  </div>
+
+  <div (click)="chosenType.set('corporate')" [class.active]="chosenType() === 'corporate'" class="sm:col col-12 p-5 border-dashed border-round surface-border flex align-items-center gap-3">
+    <i class="pi text-xl text-color-secondary pi-briefcase"></i>
+    <div class="font-bold">
+      <p class="mb-2 mt-0">Corporate Account</p>
+      <span class="text-13px text-color-secondary">Create corporate account to mane users</span>
+    </div>
+  </div>
+</div>
+
+<p-button (onClick)="nextCallback().emit()" label="Next" icon="pi pi-arrow-right" iconPos="right" class="pt-4 block text-right" />

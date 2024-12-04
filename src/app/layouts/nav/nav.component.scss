@@ -1,0 +1,29 @@
+:host {
+  display: block;
+  img.logo {
+    width: 140px;
+    height: 40px;
+  }
+  
+  .sidebar-subItem:has(.router-active) > a {
+    span, i {
+      color: var(--primary-color);
+    }
+  }
+
+  .menubar-router-active,  .p-menuitem-link:has(.menubar-router-active) {
+    span, i {
+      color: var(--primary-color);
+    }
+  }
+
+  ::ng-deep {
+    .p-menuitem:has(.menubar-router-active) {
+      > .p-menuitem-content a{
+        span, i {
+          color: var(--primary-color);
+        }
+      }
+    }
+  }
+}

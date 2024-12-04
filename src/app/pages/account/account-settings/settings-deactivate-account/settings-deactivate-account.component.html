@@ -1,0 +1,18 @@
+<p class="m-0 px-5 py-4 border-bottom-1 border-100 text-900 font-bold text-lg">Deactivate Account</p>
+
+<div class="p-5">
+  <div class="mb-4 px-4 py-3 border-dashed border-yellow-200 bg-yellow-100 border-round">
+    <p class="m-0 mb-2 text-gray-900 font-semibold">You Are Deactivating Your Account</p>
+    <span class="font-semibold text-gray-400 text-sm block mb-1">For extra security, this requires you to confirm your email or phone number when you reset your password.</span>
+    <a class="text-sm text-primary hover:text-primary-400 transition-duration-100 text-base font-bold cursor-pointer">Learn More</a>
+  </div>
+
+  <p-checkbox [binary]="true" inputId="confirm-deactivation" />
+  <label for="confirm-deactivation" class="pl-2 font-semibold text-sm text-400">I confirm my account deactivation</label>
+
+  <p class="m-0 mt-3 text-red-500 text-sm">Please check the box to deactivate your account</p>
+</div>
+
+<div class="px-5 py-4 border-top-1 text-right border-100 text-900 font-bold text-lg">
+  <p-button label="Deactivate Account" severity="danger" [loading]="loading()" (onClick)="load()" />
+</div>

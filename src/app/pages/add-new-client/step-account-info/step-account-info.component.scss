@@ -1,0 +1,15 @@
+:host {
+  
+  .team-size-parent {
+    > div {
+      cursor: pointer;
+      transition: 100ms;
+      &:hover {
+        border-color: var(--primary-color) !important;
+      }
+      &.active {
+        border-color: var(--primary-color) !important;
+      }
+    }
+  }
+}

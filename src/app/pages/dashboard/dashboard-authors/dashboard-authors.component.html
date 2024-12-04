@@ -1,0 +1,16 @@
+<div class="flex justify-content-between align-items-center mb-4">
+  <p class="m-0 mb-1 text-900 text-lg font-bold">Authors</p>
+  <app-filter-options-popup />
+</div>
+
+<div class="flex flex-column gap-3">
+  @for (author of authors; track $index) {
+    <div class="flex align-items-center">
+      <p-avatar [image]="author.image" size="large" styleClass="mr-3 overflow-hidden" />
+      <div>
+        <a class="block m-0 mb-1 text-900 text-sm hover:text-primary transition-duration-100 cursor-pointer font-bold">{{ author.name }}</a>
+        <span class="text-13px text-400 font-semibold">{{ author.skill }}</span>
+      </div>
+    </div>
+  }
+</div>

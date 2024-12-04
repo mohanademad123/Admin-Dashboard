@@ -1,0 +1,29 @@
+<div class="bg-chart-red p-4 flex justify-content-between border-round-top-lg">
+  <h3 class="m-0 font-bolder text-white">Sales Statistics</h3>
+  <app-filter-options-popup />
+</div>
+
+<div class='bg-chart-red'>
+  <apx-chart
+    [series]="chartOptions.series"
+    [chart]="chartOptions.chart"
+    [xaxis]="chartOptions.xaxis"
+    [yaxis]="chartOptions.yaxis"
+    [stroke]="chartOptions.stroke"
+    [fill]="chartOptions.fill"
+    [tooltip]="chartOptions.tooltip"
+    [colors]="chartOptions.colors"
+    [markers]="chartOptions.markers"
+  ></apx-chart>
+</div>
+
+<div class="menu grid p-4 border-round-bottom-lg surface-section">
+  @for (card of cards; track $index) {
+    <div class="col-6">
+      <div class="bg-{{card.color}}-100 border-round p-4">
+        <i class="{{card.icon}} text-3xl mb-2 line-height-2 text-{{card.color}}-700"></i>
+        <p class="font-semibold m-0 text-{{card.color}}-700">{{ card.title }}</p>
+      </div>
+    </div>
+  }
+</div>

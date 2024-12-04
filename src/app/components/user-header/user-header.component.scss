@@ -1,0 +1,16 @@
+:host {
+  .image {
+    position: relative;
+    &::after {
+      content: '';
+      background-color: var(--green-400);
+      position: absolute;
+      left:  calc(128px - .75rem);
+      bottom: 20%;
+      height: .75rem;
+      width: .75rem;
+      border-radius: 50%;
+      border: .25rem solid var(--surface-section);
+    }
+  }
+}

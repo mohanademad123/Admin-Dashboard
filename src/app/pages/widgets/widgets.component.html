@@ -1,0 +1,11 @@
+<div class="grid grid-nogutter row-gap-5 mb-5">
+
+  @for (component of components; track $index) {
+    <div class="col-12 xl:col-6">
+      <ng-container *ngComponentOutlet="component" />
+    </div>
+  }
+
+</div>
+
+<app-widgets-recent-purchases/>

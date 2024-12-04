@@ -1,0 +1,25 @@
+<p-menubar [model]="items" styleClass="card">
+  <ng-template pTemplate="start" >
+    <img src="logo.svg" class="logo mr-3 cursor-pointer hidden xl:block" alt="Logo MoDash" routerLink="/">
+    <p-button icon="pi pi-bars" (onClick)="openSidebar()" [rounded]="true" [outlined]="true" class="block xl:hidden"/>
+  </ng-template>
+
+  <ng-template pTemplate="item" let-item let-root="root">
+    <a pRipple [routerLink]="item.routerLink" routerLinkActive="menubar-router-active" [routerLinkActiveOptions]="{exact: true}"class="flex align-items-center p-menuitem-link" >
+      <span [class]="item.icon"></span>
+      <span class="ml-2">{{ item.label }}</span>
+      @if (item.items) {
+        <i [ngClass]="['pi', root ? 'pi-angle-down ml-2' : 'pi-angle-right ml-auto']"></i>
+      }
+    </a>
+  </ng-template>
+
+  <ng-template pTemplate="end">
+
+    <app-nav-menubar-end />
+
+  </ng-template>
+</p-menubar>
+
+
+<app-nav-sidebar [items]="items" [(sidebarVisible)]="sidebarVisible" />

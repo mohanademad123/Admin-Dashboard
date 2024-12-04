@@ -1,0 +1,77 @@
+:root {
+  --scrollbar-border-radius: 10px;
+  --scrollbar-thumb-color: var(--surface-300);
+}
+
+body {
+  background-color: var(--surface-ground);
+  margin: 0;
+}
+
+.router-active {
+  > a {
+    span,
+    i {
+      color: var(--primary-color);
+    }
+  }
+}
+
+.main-user-img {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+}
+
+.user-online-green-circle {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-right: 0.4rem;
+  background-color: var(--green-500);
+}
+
+.text-13px {
+  font-size: 13px;
+}
+
+.bg-light {
+  background-color: var(--highlight-bg);
+}
+
+.bg-light-alt {
+  background-color: var(--surface-hover);
+}
+
+.container {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  @media (min-width: 992px) {
+    padding-right: 30px;
+    padding-left: 30px;
+  }
+  @media (min-width: 1400px) {
+    max-width: 1320px;
+  }
+}
+
+span.tooltip {
+  width: 13px;
+  height: 13px;
+  line-height: 13px;
+  border-radius: 50%;
+  text-align: center;
+  display: inline-block;
+  color: var(--primary-color-text);
+  margin-top: .25rem;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

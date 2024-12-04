@@ -1,0 +1,10 @@
+:host {
+  display: block;
+  @media (min-width: 1400px) {
+    height: 36rem;
+    margin-right: 1rem;
+  }
+  .bg-chart-red {
+    background-color: #F8285A;
+  }
+}

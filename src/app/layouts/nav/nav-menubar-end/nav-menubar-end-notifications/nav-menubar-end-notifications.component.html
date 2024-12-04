@@ -1,0 +1,23 @@
+<p-menu #menu [popup]="true" styleClass="w-full sm:w-22rem">
+  <ng-template pTemplate="start">
+    <div class="flex align-items-center gap-3 p-4">
+      <h3 class="m-0">Notifications</h3>
+      <p-tag severity="info" value="5 new" class="p-0" />
+    </div>
+
+    @for (notification of notifications; track $index) {
+      <button pRipple class=" w-full p-link flex align-items-center gap-3 px-4 py-3 text-color hover:surface-100 border-noround">
+        <img [src]="notification.imgUrl" alt="User Image">
+        <div>
+          <p class="mt-0 mb-1 text-sm font-semibold">{{ notification.title }}</p>
+          <span class="text-xs">{{ notification.description}}</span>
+        </div>
+      </button>
+    }
+
+    <p-button label="See All Notifications" styleClass="block max-w-full w-18rem ml-auto mr-auto my-3" [outlined]="true" />
+
+  </ng-template>
+</p-menu>
+
+<p-button badge="2" badgeClass="p-badge-danger badge-absolute" (onClick)="menu.toggle($event)" icon="pi pi-bell" size="large" [text]="true"/>

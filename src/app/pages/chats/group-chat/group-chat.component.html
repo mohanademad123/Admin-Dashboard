@@ -1,0 +1,25 @@
+<div class="col-12 lg:col-5 xl:col-4 lg:pr-2 xl:pr-3">
+  <div class="surface-section p-4 pt-5 shadow-1 border-round-lg">
+    <app-chat-contacts />
+  </div>
+</div>
+
+<div class="col-12 lg:col-7 xl:col-8 lg:pl-2 xl:pl-3">
+  <div class="surface-section shadow-1 border-round-lg">
+
+    <div class="border-bottom-1 pt-4 px-5 border-200 pb-3 flex align-items-center justify-content-between">
+      <p-avatarGroup>
+        @for (item of ['male16', 'male17', 'male18', 'male19', 'male3']; track $index) {
+          <p-avatar image="users/{{item}}.png" size="large" shape="circle" />
+        }
+        <p-avatar label="+2" shape="circle" size="large" styleClass="bg-primary text-white" />
+      </p-avatarGroup>
+      
+      <app-filter-options-popup />
+    </div>
+
+    <app-chat-body class="block py-4 px-5" />
+    <app-chat-footer class="p-4" />
+
+  </div>
+</div>

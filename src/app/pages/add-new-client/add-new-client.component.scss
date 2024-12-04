@@ -1,0 +1,9 @@
+:host {
+  ::ng-deep {
+    .p-stepper-nav {
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 2.5rem;
+    }
+  }
+}

@@ -1,0 +1,24 @@
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  background-image: url('../../../../public/auth_bg.jpg');
+  background-size: cover;
+  padding: 1rem;
+
+  .box {
+    max-width: 50rem;
+    width: 100%;
+    .auth-child{
+      height: 100vh;
+    }
+    .cover {
+      max-width: 430px;
+      width: 100%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+}

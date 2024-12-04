@@ -1,0 +1,9 @@
+<div class="dashboard-layout row-gap-4">
+
+  @for (component of components; track $index) {
+    <div  [class]="component.class">
+      <ng-container *ngComponentOutlet="component.selector" />
+    </div>
+  }
+
+</div>

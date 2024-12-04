@@ -1,0 +1,19 @@
+<div class="flex justify-content-between align-items-center mb-4">
+  <p class="m-0 mb-1 text-900 text-lg font-bold">Tasks Overview</p>
+  <app-filter-options-popup />
+</div>
+
+<div class="flex flex-column gap-3">
+  @for (task of tasks; track $index) {
+    <div class="flex align-items-center gap-3">
+    <div class="w-3rem h-3rem flex justify-content-center align-items-center border-round bg-{{task.color}}-100 text-red-500">
+      <img [src]="task.icon" alt="Icon">
+    </div>
+    <div class="flex-grow-1">
+      <a class="block m-0 mb-1 text-900 text-sm hover:text-primary transition-duration-100 cursor-pointer font-bold">{{ task.title }}</a>
+      <span class="text-13px text-400 font-semibold">{{ task.description }}</span>
+    </div>
+    <p-tag severity="secondary" [value]="task.duration"/>
+  </div>
+}
+</div>

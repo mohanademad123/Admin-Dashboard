@@ -1,0 +1,22 @@
+:host {
+  display: block;
+  @media (min-width: 1400px) {
+    min-height: 36rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+  ::ng-deep {
+    .p-timeline-event-opposite {
+      flex-grow: 0;
+      padding-left: 0;
+      padding-right: .5rem;
+      min-width: fit-content;
+    }
+    .p-timeline-event-content {
+      margin-bottom: 1.75rem;
+    }
+    .p-timeline-event{
+      min-height: fit-content;
+    }
+  }
+}

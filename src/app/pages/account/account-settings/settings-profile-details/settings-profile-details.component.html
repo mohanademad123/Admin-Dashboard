@@ -1,0 +1,63 @@
+<p class="m-0 px-5 py-4 border-bottom-1 border-100 text-900 font-bold text-lg">Profile Details</p>
+
+<div class="p-5">
+  <div class="grid align-items-center font-semibold mb-5">
+    <span class="col-4 text-900 text-sm">Avatar</span>
+    <img [src]="accountService.avatar" class="w-5rem shadow-3 cursor-pointer p-1 border-round" alt="Avatar">
+  </div>
+
+  <div class="grid align-items-center font-semibold mb-5">
+    <span class="col-12 sm:col-4 text-900 text-sm">Full Name <span class="text-red-500">*</span></span>
+    <input type="text" pInputText [(ngModel)]="accountService.fullName" variant="filled" class="col-12 sm:col-8">
+  </div>
+
+  <div class="grid align-items-center font-semibold mb-5">
+    <span class="col-12 sm:col-4 text-900 text-sm">Company <span class="text-red-500">*</span></span>
+    <input type="text" pInputText [(ngModel)]="accountService.company" variant="filled" class="col-12 sm:col-8">
+  </div>
+
+  <div class="grid align-items-center font-semibold mb-5">
+    <span class="col-12 sm:col-4 text-900 text-sm">Contact Phone <span class="text-red-500">*</span></span>
+    <input type="text" pInputText [(ngModel)]="accountService.contactPhone" variant="filled" class="col-12 sm:col-8">
+  </div>
+
+  <div class="grid align-items-center font-semibold mb-5">
+    <span class="col-12 sm:col-4 text-900 text-sm">Contact Email <span class="text-red-500">*</span></span>
+    <input type="text" pInputText [(ngModel)]="accountService.contactEmail" variant="filled" class="col-12 sm:col-8">
+  </div>
+
+  <div class="grid align-items-center font-semibold mb-5">
+    <span class="col-12 sm:col-4 text-900 text-sm">Country <span class="text-red-500">*</span></span>
+    <p-dropdown [options]="accountService.countries" [(ngModel)]="accountService.country" optionValue="name" optionLabel="name" variant="filled" class="col-12 sm:col-8 p-0" placeholder="Select a Country" />
+  </div>
+
+  <div class="grid align-items-center font-semibold mb-5">
+    <span class="col-12 sm:col-4 text-900 text-sm">Language <span class="text-red-500">*</span></span>
+    <p-dropdown [options]="accountService.languages" [(ngModel)]="accountService.language" optionValue="name" optionLabel="name" variant="filled" class="col-12 sm:col-8 p-0" placeholder="Select a Language" />
+  </div>
+
+  <div class="grid align-items-center font-semibold mb-5">
+    <span class="col-12 sm:col-4 text-900 text-sm">Currency <span class="text-red-500">*</span></span>
+    <p-dropdown [options]="accountService.currencies" optionValue="name" optionLabel="name" variant="filled" class="col-12 sm:col-8 p-0" placeholder="Select a Currency" />
+  </div>
+
+  <div class="grid align-items-center font-semibold mb-5">
+    <span class="col-12 sm:col-4 text-900 text-sm">Communication</span>
+    <div class="col-12 sm:col-8">
+      <p-checkbox inputId="email" [binary]="true" class="p-0" variant="filled" />
+      <label for="email" class="pl-2 mr-3 text-sm">Email</label>
+
+      <p-checkbox inputId="phone" [binary]="true" class="p-0" variant="filled" />
+      <label for="phone" class="pl-2 text-sm">Phone</label>
+    </div>
+  </div>
+
+  <div class="grid align-items-center font-semibold mb-5">
+    <span class="col sm:col-4 text-900 text-sm">Allow Marketing</span>
+    <p-inputSwitch />
+  </div>
+</div>
+
+<div class="px-5 py-4 border-top-1 text-right border-100 text-900 font-bold text-lg">
+  <p-button label="Save Changes" [loading]="loading()" (onClick)="load()" />
+</div>

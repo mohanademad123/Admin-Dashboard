@@ -1,0 +1,32 @@
+<div class="flex justify-content-between align-items-center mb-2">
+  <div>
+    <p class="m-0 mb-1 text-900 text-lg font-bold">Latest Products</p>
+    <span class="text-13px text-400 font-semibold">More than 400 new products</span>
+  </div>
+  <div class="">
+    <p-button label="Month" [text]="timePeriod() !== 'month'" (onClick)="timePeriod.set('month')" size="small" />
+    <p-button label="Week" [text]="timePeriod() !== 'week'" (onClick)="timePeriod.set('week')" size="small" />
+    <p-button label="Day" [text]="timePeriod() !== 'day'" (onClick)="timePeriod.set('day')" size="small" />
+  </div>
+</div>
+
+<p-table [value]="filteredProducts" [tableStyle]="{'min-width': '47rem'}">
+  <ng-template pTemplate="body" let-product>
+    <tr>
+      <td class="flex align-items-center">
+        <p-avatar [image]="product.imgUrl" size="xlarge" styleClass="mr-3 overflow-hidden" />
+        <div>
+          <a class="block m-0 mb-1 text-900 text-sm hover:text-primary transition-duration-100 cursor-pointer font-bold">{{ product.name }}</a>
+          <span class="text-13px text-400 font-semibold">{{ product.date }}</span>
+        </div>
+      </td>
+
+      <td>{{ product.orderId }}</td>
+      <td class="font-bold">{{ product.price | currency : 'USD' : 'symbol' : '1.0-0' }}</td>
+
+      <td><p-tag [value]="product.payment" [severity]="product.payment === 'Done' ? 'success' : 'warning'"></p-tag></td>
+
+      <td><p-button icon="pi pi-arrow-right" [text]="true" /></td>
+    </tr>
+  </ng-template>
+</p-table>

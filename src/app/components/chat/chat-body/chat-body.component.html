@@ -1,0 +1,16 @@
+@for (message of chatService.currentChat(); track $index) {
+  <div [ngClass]="{'flex-row-reverse': !$even}" class="flex align-items-center gap-2 mb-1" >
+    <img [src]="message.user.imgUrl" [alt]="message.user.name">
+    <p class="m-0 font-bold">{{ message.user.name }}</p>
+    <span class="text-xs text-gray-500">{{ message.time }}</span>
+  </div>
+
+  <div class="text-alert p-3 border-round text-13px line-height-3 font-semibold"
+    [ngClass]="{
+      'bg-light ml-auto text-right': !$even,
+      'bg-light-alt': !!$even,
+    }"
+  >
+    {{ message.msg }}
+  </div>
+}

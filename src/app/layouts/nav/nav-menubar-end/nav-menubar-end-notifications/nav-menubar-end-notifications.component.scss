@@ -1,0 +1,18 @@
+::ng-deep {
+  .badge-absolute {
+    position: absolute;
+    top: 0;
+    right: 10%;
+  }
+}
+
+img {
+  height: 3rem;
+  width: 3rem;
+  border-radius: 50%;
+}
+
+.btn-notification {
+  display: block;
+  width: 100%;
+}

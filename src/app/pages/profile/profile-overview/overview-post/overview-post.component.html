@@ -1,0 +1,42 @@
+<div class="flex align-items-center justify-content-between gap-3 mb-3">
+  <p-avatar [image]="post().imgUrl" [label]="!post().imgUrl ? post().name[0] : ''" size="large" styleClass="bg-pink-100 text-pink-500 overflow-hidden"/>
+  <div class="flex-grow-1">
+    <p class="m-0 mb-1 font-bold text-900 text-sm hover:text-primary transition-duration-100 cursor-pointer">{{ post().name }}</p>
+    <span class="text-400 font-semibold text-13px">{{ post().time | date }}</span>
+  </div>
+  <app-filter-options-popup />
+</div>
+
+
+<p class="m-0 mb-1 text-800 text-sm line-height-3 mb-3">{{ post().content }}</p>
+@if (post().contentImgUrl) {
+  <img [src]="post().contentImgUrl" alt="Content Image" class="w-full max-h-21rem mb-2 border-round">
+}
+@if (post().contentVideoUrl) {
+  <video [src]="post().contentVideoUrl" controls class="w-full mb-2 border-round"></video>
+}
+<p-button [label]="post().likes.toString()" size="small" [text]="true" icon="pi pi-thumbs-up-fill" styleClass="text-400 surface-100 hover:text-primary-500 hover:bg-primary-100 transition-duration-100 mr-2" />
+<p-button [label]="post().loves.toString()" size="small" [text]="true" icon="pi pi-heart-fill" styleClass="text-400 surface-100 hover:text-red-500 hover:bg-red-100 transition-duration-100" />
+
+
+@for (comment of post().comments; track comment.id) {
+  <div class="flex justify-content-between gap-3 mb-3 pl-5" [class.mt-5]="$first">
+    <p-avatar [image]="comment.imgUrl" [label]="!comment.imgUrl ? comment.name[0] : ''" size="large" styleClass="bg-purple-100 text-purple-500 overflow-hidden"/>
+
+    <div class="flex-grow-1">
+      <div class="flex justify-content-between gap-2 mb-2">
+        <p class="m-0 font-bold text-900 text-13px hover:text-primary transition-duration-100 cursor-pointer">{{ comment.name }}</p>
+        <span class="text-400 text-xs flex-grow-1">{{ comment.time | date }}</span>
+        <a class="text-400 text-xs hover:text-primary transition-duration-100 cursor-pointer">Reply</a>
+      </div>
+      <p class="m-0 mb-1 text-800 text-13px line-height-3">{{ comment.content }}</p>
+    </div>
+  </div>
+}
+
+
+<div class="border-top-1 border-100 flex flex-wrap justify-content-end mt-3 pt-2">
+  <input type="text" pInputText placeholder="Replay...">
+  <p-button icon="pi pi-send" [text]="true" />
+  <p-button icon="pi pi-link" [text]="true" />
+</div>

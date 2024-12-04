@@ -1,0 +1,65 @@
+<p class="m-0 mb-5 text-900 text-3xl font-bold">Sign Up</p>
+
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="mb-4 text-left">
+  <div class="mb-5">
+    <p-floatLabel>
+      <input pInputText id="fullName" formControlName="fullName" class="w-full" />
+      <label for="fullName">FullName</label>
+    </p-floatLabel>
+    @if (registerForm.controls.fullName.hasError('minlength') && registerForm.controls.fullName.touched) {
+      <small class="text-red-500 block mt-1 text-xs">FullName must be at least 5 characters</small>
+    }
+    @if (registerForm.controls.fullName.hasError('required') && registerForm.controls.fullName.touched) {
+      <small class="text-red-500 block mt-1 text-xs">FullName is required</small>
+    }
+  </div>
+
+  <div class="mb-5">
+    <p-floatLabel>
+      <input pInputText id="email" formControlName="email" class="w-full" />
+      <label for="email">Email</label>
+    </p-floatLabel>
+    @if (registerForm.controls.email.hasError('pattern') && registerForm.controls.email.touched) {
+      <small class="text-red-500 block mt-1 text-xs">Enter a valid email</small>
+    }
+    @if (registerForm.controls.email.hasError('required') && registerForm.controls.email.touched) {
+      <small class="text-red-500 block mt-1 text-xs">Email is required</small>
+    }
+  </div>
+
+  <div class="mb-5">
+    <p-floatLabel class="w-full">
+      <p-password formControlName="password" [feedback]="false" [toggleMask]="true" />
+      <label for="password">Password</label>
+    </p-floatLabel>
+    @if (registerForm.controls.password.hasError('minlength') && registerForm.controls.password.touched) {
+      <small class="text-red-500 block mt-1 text-xs">Password must be at least 5 characters</small>
+    }
+    @if (registerForm.controls.password.hasError('required') && registerForm.controls.password.touched) {
+      <small class="text-red-500 block mt-1 text-xs">Password is required</small>
+    }
+  </div>
+
+  <div class="mb-5">
+    <p-floatLabel class="w-full">
+      <p-password formControlName="confirmPassword" [feedback]="false" [toggleMask]="true" />
+      <label for="confirmPassword">Confirm Password</label>
+    </p-floatLabel>
+    @if (registerForm.controls.confirmPassword.hasError('required') && registerForm.controls.confirmPassword.touched) {
+      <small class="text-red-500 block mt-1 text-xs">Confirm Password is required</small>
+    }@else if (registerForm.controls.confirmPassword.hasError('minlength') && registerForm.controls.confirmPassword.touched) {
+      <small class="text-red-500 block mt-1 text-xs">Confirm Password must be at least 5 characters</small>
+    } @else if (registerForm.controls.confirmPassword.hasError('matchPassword') && registerForm.controls.confirmPassword.touched) {
+      <small class="text-red-500 block mt-1 text-xs">Password doesn't match</small>
+    }
+  </div>
+
+  <div class="mb-4">
+    <p-checkbox formControlName="acceptTerms" [binary]="true" inputId="acceptTerms" label="I Accept The" class="text-sm" />
+    <a class="text-primary text-sm font-medium ml-1 hover:text-primary-400 transition-duration-100">Terms.</a>
+  </div>
+
+  <p-button [disabled]="registerForm.invalid" type="submit" label="Sign Up" [loading]="loading()" styleClass="w-full" />
+</form>
+
+<p class="text-sm mb-5 text-400">Already have an Account? <a routerLink="/auth/login" class="text-primary font-medium ml-1 hover:text-primary-400 transition-duration-100">Sign In</a></p>

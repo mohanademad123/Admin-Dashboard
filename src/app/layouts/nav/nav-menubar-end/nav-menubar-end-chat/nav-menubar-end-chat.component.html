@@ -1,0 +1,24 @@
+<p-sidebar #sidebarRef [(visible)]="sidebarVisible" position="right">
+  <ng-template pTemplate="headless">
+    <div class="flex flex-column h-full">
+
+      <div class="border-bottom-1 border-200 flex align-items-center justify-content-between px-4 py-3 flex-shrink-0">
+        <app-chat-header />
+        <p-button (onClick)="sidebarRef.close($event)" icon="pi pi-times" [text]="true" />
+      </div>
+
+      <ng-scrollbar>
+        <div class="overflow-y-auto p-4">
+          <app-chat-body />
+        </div>
+      </ng-scrollbar>
+
+      <div class="mt-auto p-4">
+        <app-chat-footer />
+      </div>
+
+    </div>
+  </ng-template>
+</p-sidebar>
+
+<p-button id="menuChatButton" (onClick)="sidebarVisible.set(true)" icon="pi pi-comments" size="large" [text]="true"></p-button>

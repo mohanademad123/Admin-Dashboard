@@ -1,0 +1,15 @@
+:host {
+  display: block;
+  @media (min-width: 1400px) {
+    margin-left: 1rem;
+  }
+  ::ng-deep {
+    tr {
+      &:last-of-type {
+        td {
+          border-bottom: none;
+        }
+      }
+    }
+  }
+}

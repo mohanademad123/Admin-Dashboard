@@ -1,0 +1,20 @@
+<div class="px-5 py-4 border-bottom-1 border-100 flex justify-content-between align-items-center">
+  <p class="m-0 text-900 font-bold text-lg">Profile Details</p>
+  <p-button label="Edit Profile" icon="pi pi-pencil" routerLink="/account/settings" />
+</div>
+
+<div class="p-5">
+  @for (item of details; track $index) {
+    <div class="grid align-items-center font-semibold mb-3">
+      <span class="col md:col-4 text-400 text-sm">{{ item.name }}</span>
+      <span class="col md:col-8 text-900">{{ item.value }}</span>
+    </div>
+  }
+
+  <div class="p-4 border-dashed border-yellow-400 bg-yellow-50 mt-4 border-round">
+    <p class="m-0 mb-2 text-lg text-gray-900 font-bold">We need your attention!</p>
+    <span class="text-400 font-semibold text-sm">Your payment was declined. To start using tools, please
+      <a class="text-primary hover:text-primary-400 transition-duration-100 text-base font-bold cursor-pointer">Add Payment Method .</a>
+    </span>
+  </div>
+</div>

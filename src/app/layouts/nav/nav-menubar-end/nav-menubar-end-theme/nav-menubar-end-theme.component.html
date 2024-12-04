@@ -1,0 +1,8 @@
+<p-menu #menu [model]="items" [popup]="true" />
+
+<p-button
+  (onClick)="menu.toggle($event)"
+  [icon]="themeService.currentTheme() === 'light' ? 'pi pi-sun' : 'pi pi-moon'"
+  size="large"
+  [text]="true"
+/>

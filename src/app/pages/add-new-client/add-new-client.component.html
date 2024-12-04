@@ -1,0 +1,14 @@
+<p-stepper [linear]="true" class="md:px-8">
+
+  @for (step of steps; track $index) {
+    <p-stepperPanel [header]="step.header">
+      <ng-template pTemplate="content" let-prevCallback="prevCallback" let-nextCallback="nextCallback" let-index="index">
+
+        <ng-container *ngComponentOutlet="step.component; inputs: getInputs($index, nextCallback, prevCallback)" >
+        </ng-container>
+
+      </ng-template>
+    </p-stepperPanel>
+  }
+
+</p-stepper>

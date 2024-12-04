@@ -1,0 +1,79 @@
+<div class="flex justify-content-between gap-2 align-items-center mb-2">
+  <div>
+    <p class="m-0 mb-1 text-900 text-lg font-bold">Recent Purchases</p>
+    <span class="text-13px text-400 font-semibold">Over 500 purchases</span>
+  </div>
+  <app-filter-options-popup />
+</div>
+
+<p-table #dataTable
+  [value]="purchasesService.currentPurchases()"
+  [(selection)]="selectedPurchases"
+  dataKey="id"
+  [tableStyle]="{'min-width': '60rem'}"
+  [paginator]="true"
+  [rows]="5"
+  [rowsPerPageOptions]="[5, 10, 20]"
+  [globalFilterFields]="['id', 'country.name', 'country.code', 'date.date','date.code' ,'company.name','company.service', 'total', 'status']"
+>
+  <ng-template pTemplate="caption">
+    <div class="flex">
+      <p-iconField iconPosition="left" class="ml-auto">
+        <p-inputIcon>
+            <i class="pi pi-search"></i>
+        </p-inputIcon>
+        <input #filterInput
+            pInputText
+            type="text"
+            (input)="dataTable.filterGlobal(filterInput.value, 'contains')"
+            placeholder="Search keyword" />
+      </p-iconField>
+    </div>
+  </ng-template>
+  <ng-template pTemplate="header">
+    <tr>
+      <th><p-tableHeaderCheckbox /></th>
+      @for (title of titles; track $index) {
+        <th class="text-400">{{ title }}</th>
+      }
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-purchase>
+    <tr>
+      <td class="pr-0">
+        <p-tableCheckbox [value]="purchase" />
+      </td>
+
+      <td>
+        <a class="text-900 text-sm hover:text-primary transition-duration-100 cursor-pointer font-bold">{{ purchase.id }}</a>
+      </td>
+
+      <td>
+        <p class="mb-1 m-0 text-900 text-sm font-bold">{{ purchase.country.name }}</p>
+        <span class="text-13px text-400 font-semibold">Code: {{ purchase.country.code }}</span>
+      </td>
+
+      <td>
+        <p class="mb-1 m-0 text-900 text-sm font-bold">{{ purchase.date.date }}</p>
+        <span class="text-13px text-400 font-semibold">Code: {{ purchase.date.code }}</span>
+      </td>
+
+      <td>
+        <a class="block m-0 mb-1 text-900 text-sm hover:text-primary transition-duration-100 cursor-pointer font-bold">{{ purchase.company.name }}</a>
+        <span class="text-13px text-400 font-semibold">{{ purchase.company.service }}</span>
+      </td>
+
+      <td class="text-900 text-sm font-bold">{{ purchase.total | currency : 'USD' : 'symbol' : '1.0-0' }}</td>
+
+      <td>
+        <p-tag [value]="purchase.status" [severity]="getSeverity(purchase.status)" />
+      </td>
+
+      <td>
+        <p-button icon="pi pi-database" [text]="true" />
+        <p-button icon="pi pi-pencil" [text]="true" />
+        <p-button icon="pi pi-trash" [text]="true" />
+      </td>
+    </tr>
+  </ng-template>
+</p-table>

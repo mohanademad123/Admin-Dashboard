@@ -1,0 +1,8 @@
+<textarea rows="2" #textarea pInputTextarea placeholder="Type a message"></textarea>
+<div class="flex justify-content-between align-items-center">
+  <div>
+    <p-button icon="pi pi-link" [text]="true" />
+    <p-button icon="pi pi-upload" [text]="true" />
+  </div>
+  <p-button [disabled]="!textarea.value" (onClick)="onAddNewMessageToChat(textarea)" label="Send"/>
+</div>

@@ -1,0 +1,15 @@
+<div class="flex justify-content-between gap-2 align-items-center mb-5">
+  <div>
+    <p class="m-0 mb-1 text-900 text-lg font-bold">Sales Overview</p>
+    <span class="text-13px text-400 font-semibold">Recent sales statistics</span>
+  </div>
+  <app-filter-options-popup />
+</div>
+
+<apx-chart
+  [series]="chartOptions.series"
+  [chart]="chartOptions.chart"
+  [xaxis]="chartOptions.xaxis"
+  [title]="chartOptions.title"
+  [tooltip]="chartOptions.tooltip"
+></apx-chart>

@@ -1,0 +1,79 @@
+<p class="choose-account m-0 mb-2 text-xl font-bold">Billing Details</p>
+<p class="text-color-secondary text-13px font-bold mb-6">
+  If you need more info, please check out
+  <span class="text-primary hover:text-primary-400 transition-duration-100 text-sm cursor-pointer">Help Page</span> .
+</p>
+
+<form [formGroup]="billingForm">
+  <p class="mb-5">
+    <label for="nameOnCard" class="block mb-2">Name On Card <span class="text-red-500">*</span>
+      <span tooltipStyleClass="text-xs" class="tooltip text-xs ml-2 surface-400" pTooltip="Specify a card holder's name">!</span>
+    </label>
+    <input variant="filled" formControlName="nameOnCard" pInputText id="nameOnCard" aria-describedby="nameOnCard-help" />
+    @if (billingForm.controls.nameOnCard.invalid && billingForm.controls.nameOnCard.dirty) {
+      <small id="nameOnCard-help" class="text-red-500 block mt-1">Name on card is required</small>
+    }
+  </p>
+
+  <p class="mb-5">
+    <label class="block mb-2">Card Number <span class="text-red-500">*</span></label>
+    <p-iconField iconPosition="right">
+      <p-inputIcon>
+        <img src="card/visa.svg" class="w-2rem mt-1 block" alt="Visa Card">
+      </p-inputIcon>
+
+      <p-inputMask variant="filled" mask="9?999 9999 9999 9999" formControlName="cardNumber" placeholder="1234 1234 1234 1234" />
+    </p-iconField>
+
+    @if (billingForm.controls.cardNumber.hasError('pattern') && billingForm.controls.cardNumber.touched) {
+      <small class="text-red-500 block mt-1">Enter a valid card number</small>
+    }
+    @if (billingForm.controls.cardNumber.hasError('required') && billingForm.controls.cardNumber.touched) {
+      <small class="text-red-500 block mt-1">Card number is required</small>
+    }
+  </p>
+
+  <div class="grid mb-4">
+    <p class="col-12 sm:col">
+      <label for="expirationDate" class="block mb-2">Expiration Date <span class="text-red-500">*</span></label>
+
+      <p-inputMask variant="filled" mask="9?9 / 99" inputId="expirationDate" formControlName="expirationDate" placeholder="MM / YY" />
+
+      @if (billingForm.controls.expirationDate.hasError('pattern') && billingForm.controls.expirationDate.touched) {
+        <small class="text-red-500 block mt-1">Enter a valid expiration date</small>
+      }
+      @if (billingForm.controls.expirationDate.hasError('required') && billingForm.controls.expirationDate.touched) {
+        <small class="text-red-500 block mt-1">Expiration date is required</small>
+      }
+    </p>
+
+    <p class="col-12 sm:col">
+      <label for="cvc" class="block mb-2">CVC <span class="text-red-500">*</span></label>
+
+      <p-inputMask variant="filled" mask="9?999" inputId="cvc" formControlName="cvc" placeholder="1234" />
+
+      @if (billingForm.controls.cvc.hasError('pattern') && billingForm.controls.cvc.touched) {
+        <small class="text-red-500 block mt-1">Enter a valid card CVC code</small>
+      }
+      @if (billingForm.controls.cvc.hasError('required') && billingForm.controls.cvc.touched) {
+        <small class="text-red-500 block mt-1">CVC code is required</small>
+      }
+    </p>
+  </div>
+
+  <div class="flex gap-3 justify-content-between align-items-center mb-4">
+    <div class="flex-grow-1">
+      <p class="m-0 mb-1">Save Card for further billing?</p>
+      <span class="text-color-secondary text-13px">If you need more info, please check budget planning</span>
+    </div>
+    <div class="flex justify-content-end align-items-center">
+      <p-inputSwitch inputId="saveCard" formControlName="saveCard"/>
+      <label for="saveCard" class="ml-2 mb-1 text-color-secondary text-sm">Save Card</label>
+    </div>
+  </div>
+</form>
+
+<div class="flex pt-4 justify-content-between">
+  <p-button label="Back" icon="pi pi-arrow-left" (onClick)="prevCallback().emit()" />
+  <p-button [disabled]="billingForm.invalid" (onClick)="nextCallback().emit()" label="Next" icon="pi pi-arrow-right" iconPos="right" />
+</div>
